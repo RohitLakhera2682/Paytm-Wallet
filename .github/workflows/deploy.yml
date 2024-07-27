@@ -39,7 +39,16 @@ jobs:
               sudo docker pull rohitlakhera/cd:latest
               sudo docker stop web-app || true
               sudo docker rm web-app || true
-              sudo docker run -d --name web-app -p 3005:3000 rohitlakhera/cd:latest
+              sudo docker run -e DATABASE_URL= ${SECRETS.DB_URL} --restart-always -d --name web-app -p 3005:3000 rohitlakhera/cd:latest
 
 
 #use ingx to  add port on 3005
+
+# challenge: deploy to elastic beanstalk in aws for scaling
+
+#ECR => Elastic container registry
+#ECS => Elastic container service 
+
+
+# ASG => AUto scaling groups
+# GCP cloud run
